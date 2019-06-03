@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.recaptcha.recaptcha.captcha.RequiresCaptcha;
 import com.recaptcha.recaptcha.dto.UserDto;
 import com.recaptcha.recaptcha.exception.RegistrationException;
 import com.recaptcha.recaptcha.validator.CaptchaValidator;
@@ -30,8 +31,10 @@ public class RegisterController {
   }
 
   @PostMapping
+  @RequiresCaptcha
+  @ResponseStatus(value = HttpStatus.OK)
   public String registerWithAnnotation(@RequestBody UserDto user) {
-
+    return user.getUserName();
   }
 
 }
