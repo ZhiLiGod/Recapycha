@@ -1,0 +1,3 @@
+google
+  recaptcha
+    secret: SERVER_KEY
